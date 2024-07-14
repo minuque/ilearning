@@ -1,0 +1,2 @@
+cd vue3-vite-ts
+npm run lint
