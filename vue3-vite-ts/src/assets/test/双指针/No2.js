@@ -35,7 +35,7 @@ rl.on('line', (line) => {
         res.push(flagIndex[b] - flagIndex[a] + 1);
       }
 
-      b ++;
+      b++;
     }
 
     if (!res.length) {
