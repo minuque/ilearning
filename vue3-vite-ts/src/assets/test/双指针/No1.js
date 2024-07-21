@@ -1,4 +1,4 @@
-// 双指针-字符串判判定
+// 字符串判判定
 const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,

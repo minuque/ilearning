@@ -1,4 +1,4 @@
-// 双指针-最长的指定瑕疵度的元音子串 [aeiouAEIOU]
+// 最长的指定瑕疵度的元音子串 [aeiouAEIOU]
 const readline = require('readline');
 
 const rl = readline.createInterface({
