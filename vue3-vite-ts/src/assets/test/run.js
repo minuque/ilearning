@@ -1,39 +1,21 @@
-testFn(0, 'caeiou');
+const arr = '1 2 3 4 5 6 7 8 9 10'.split(' ').map(Number);
+let totalSum = arr.reduce((a, b) => a + b, 0);
+let res = Number.MAX_SAFE_INTEGER;
 
-function testFn(flaw, line) {
-  let a = 0;
-  let b = 0;
-  let c = 0;
-  const res = [];
-  const content = line.trim();
-  const flagIndex = [];
-
-  // 标记元音字符的位置索引
-  for (let i = 0; i < content.length; i++) {
-    if (['a', 'e', 'i', 'o', 'u'].includes(content.charAt(i).toLowerCase())) {
-      flagIndex.push(i);
-    }
+function dfs(arr, index = 0, count = 0, currNum = 0) {
+  // 选满一队更新最小值
+  if (count === 5) {
+    const other = totalSum - currNum;
+    res = Math.min(Math.abs(currNum - other), res);
+    return;
   }
 
-  while (b < content.length) {
-    // 计算瑕疵度
-    const diff = flagIndex[b] - flagIndex[a] - (b - a);
-
-    if (diff > flaw) {
-      a++;
-      continue;
-    }
-
-    if (diff === flaw) {
-      res.push(flagIndex[b] - flagIndex[a] + 1);
-    }
-
-    b++;
-  }
-
-  if (!res.length) {
-    console.log(0);
-  } else {
-    console.log(Math.max(...res));
-  }
+  if (index === 10) return;
+  // 选当前
+  dfs(arr, index + 1, count + 1, arr[index] + currNum);
+  // 不选当前
+  dfs(arr, index + 1, count, currNum);
 }
+
+dfs(arr);
+console.log(res);
